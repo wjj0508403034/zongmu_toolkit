@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Threading;
+using Limilabs.FTP.Client;
 
 namespace zongmu_toolkit
 {
@@ -23,5 +14,42 @@ namespace zongmu_toolkit
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.ProgressBar.Value = 50;
+            using (var ftp = new Ftp())
+            {
+                ftp.Connect("localhost");
+                ftp.Login("sa", "123456");
+                ftp.Progress += ftp_Progress;
+                ftp.CreateFolder("TestXX");
+                var ftpResponse = ftp.Upload(@"TestXX\front.avi", @"C:\demo\Highlander_Day_Sun_2016_4_14_2\Datalog\front.avi");
+                if (ftpResponse.Code == 226)
+                {
+                    Console.WriteLine("Success");
+                }
+                else
+                {
+                    Console.WriteLine("Failed");
+                }
+                ftp.Close();
+            }
+
+        }
+
+        private void ftp_Progress(object sender, ProgressEventArgs e)
+        {
+            Console.WriteLine(e.Percentage);
+            this.Dispatcher.Invoke(DispatcherPriority.Background, new OnProgressChangedEventHandler(this.OnProgressChanged), e.Percentage);
+
+        }
+
+        private void OnProgressChanged(double percentage)
+        {
+            this.ProgressBar.Value = percentage;
+        }
+
+        private delegate void OnProgressChangedEventHandler(double percentage);
     }
 }
