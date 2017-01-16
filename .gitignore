@@ -6,3 +6,4 @@ zongmu_toolkit/obj
 zongmu_toolkit.sln.DotSettings.user
 zongmu_toolkit/zongmu_toolkit.csproj.DotSettings
 packages/*
+zongmu_toolkit/Plugins/*
