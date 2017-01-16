@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ffprobe:ffprobe xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:ffprobe='http://www.ffmpeg.org/schema/ffpro
+be' xsi:schemaLocation='http://www.ffmpeg.org/schema/ffprobe ffprobe.xsd'>
+  <streams>
+    <stream index="0" codec_name="mjpeg" codec_long_name="Motion JPEG" codec_type="video" codec_time_base="1/15" cod=""
+ec_tag_string="MJPG" codec_tag="0x47504a4d" width="720" height="480" coded_width="720" coded_height="480" has_b_frames="
+0" sample_aspect_ratio="0:1" display_aspect_ratio="0:1" pix_fmt="yuvj420p" level="-99" color_range="pc" color_space="bt4
+70bg" chroma_location="center" refs="1" r_frame_rate="15/1" avg_frame_rate="15/1" time_base="1/15" start_pts="0" start_t=""
+ime="0.000000" duration_ts="7527" duration="501.800000" bit_rate="9391130" bits_per_raw_sample="8" nb_frames="7527">
+      <disposition default="0" dub="0" original="0" comment="0" lyrics="0" karaoke="0" forced="0" hearing_impaired
+="0" visual_impaired="0" clean_effects="0" attached_pic="0"/>
+    </stream>
+  </streams>
+</ffprobe:ffprobe>

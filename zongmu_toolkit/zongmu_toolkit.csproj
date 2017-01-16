@@ -11,7 +11,8 @@
     <RootNamespace>zongmu_toolkit</RootNamespace>
     <AssemblyName>zongmu_toolkit</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -40,6 +41,10 @@
       <HintPath>..\packages\Ftp.dll.2.0.16326.1309\lib\Net20\Ftp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=2.0.7.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.7\lib\net40-client\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -59,7 +64,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Views\Common\Tile.cs" />
+    <Compile Include="Views\MediaPlayer\Commands\AbstractCommand.cs" />
+    <Compile Include="Views\MediaPlayer\Commands\CommandResult.cs" />
+    <Compile Include="Views\MediaPlayer\Commands\ICommand.cs" />
+    <Compile Include="Views\MediaPlayer\Commands\ReadVideoInfoCommand.cs" />
+    <Compile Include="Views\MediaPlayer\Exceptions\ReadVideoInfoFailedException.cs" />
+    <Compile Include="Views\MediaPlayer\Status.cs" />
+    <Compile Include="Views\MediaPlayer\Video.cs" />
+    <Compile Include="Views\MediaPlayer\VideoPlayer.xaml.cs">
+      <DependentUpon>VideoPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MediaPlayer\VideoProcessor.cs" />
     <Compile Include="Views\Upload\FtpUpload.xaml.cs">
       <DependentUpon>FtpUpload.xaml</DependentUpon>
     </Compile>
@@ -75,6 +92,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\MediaPlayer\VideoPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Upload\FtpUpload.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +119,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -109,6 +131,11 @@
     <Folder Include="Configs\" />
     <Folder Include="Service\" />
     <Folder Include="Views\Monitors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\file.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
