@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Threading;
 using Limilabs.FTP.Client;
+using zongmu_toolkit.Configs;
 using zongmu_toolkit.Views.MediaPlayer.Commands;
 
 namespace zongmu_toolkit
@@ -14,10 +15,11 @@ namespace zongmu_toolkit
         public MainWindow()
         {
             InitializeComponent();
+            var ss = Configuration.GetSection<AppConfig>("app");
             //var command = new ReadVideoInfoCommand();
             //command.Run();
-            this.xx.Source = new Uri(@"C:\demo\Highlander_Day_Sun_2016_4_14_2\Datalog\front.avi");
-            this.xx.Play();
+            //this.xx.Source = new Uri(@"C:\demo\Highlander_Day_Sun_2016_4_14_2\Datalog\front.avi");
+            //this.xx.Play();
 
         }
 

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Text;
 using log4net;
+using zongmu_toolkit.Configs;
 
 namespace zongmu_toolkit.Views.MediaPlayer.Commands
 {
@@ -9,9 +10,39 @@ namespace zongmu_toolkit.Views.MediaPlayer.Commands
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof(AbstractCommand));
 
+        private FfmpegConfig ffmpegConfig;
         private readonly Process process = new Process();
 
-        public abstract ProcessStartInfo GetProcessStartInfo();
+        public FfmpegConfig FfmpegConfig
+        {
+            get
+            {
+                if(this.ffmpegConfig == null )
+                {
+                    this.ffmpegConfig = Configuration.GetSection<FfmpegConfig>("ffmpeg");
+                }
+
+                return this.ffmpegConfig;
+            }
+        }
+
+        private CacheConfig cacheConfig;
+        public CacheConfig CacheConfig
+        {
+            get
+            {
+                if(this.cacheConfig == null )
+                {
+                    this.cacheConfig = Configuration.CacheConfig();
+                }
+
+                return this.cacheConfig;
+            }
+        }
+
+        public string FilePath { get; set; }
+
+        protected abstract ProcessStartInfo GetProcessStartInfo();
 
         public CommandResult Run()
         {

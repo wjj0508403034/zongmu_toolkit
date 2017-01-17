@@ -46,6 +46,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,6 +65,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configs\AppConfig.cs" />
+    <Compile Include="Configs\CacheConfig.cs" />
+    <Compile Include="Configs\Configuration.cs" />
+    <Compile Include="Configs\FfmpegConfig.cs" />
+    <Compile Include="Configs\FtpConfig.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Views\Common\Tile.cs" />
     <Compile Include="Views\MediaPlayer\Commands\AbstractCommand.cs" />
@@ -72,7 +78,7 @@
     <Compile Include="Views\MediaPlayer\Commands\ReadVideoInfoCommand.cs" />
     <Compile Include="Views\MediaPlayer\Exceptions\ReadVideoInfoFailedException.cs" />
     <Compile Include="Views\MediaPlayer\Status.cs" />
-    <Compile Include="Views\MediaPlayer\Video.cs" />
+    <Compile Include="Views\MediaPlayer\VideoInfo.cs" />
     <Compile Include="Views\MediaPlayer\VideoPlayer.xaml.cs">
       <DependentUpon>VideoPlayer.xaml</DependentUpon>
     </Compile>
@@ -128,9 +134,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Configs\" />
     <Folder Include="Service\" />
     <Folder Include="Views\Monitors\" />
+    <Folder Include="Views\Settings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\file.xml">
