@@ -1,8 +1,13 @@
 ﻿using System;
+using System.IO;
 using System.Net.Cache;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using zongmu_toolkit.Utils;
+using Timer = System.Timers.Timer;
 
 namespace zongmu_toolkit.Views.MediaPlayer
 {
@@ -13,12 +18,14 @@ namespace zongmu_toolkit.Views.MediaPlayer
     {
         private Timer timer;
         private long currentFrame;
+        private string hash;
         private Status status;
         private double currentTime;
         private Uri source;
         private VideoInfo videoInfo;
         private delegate void OnTimeChangeEventHandler();
         private readonly VideoProcessor processor = new VideoProcessor();
+        private string Cache = @"c:/cache/";
 
         public VideoPlayer()
         {
@@ -126,20 +133,32 @@ namespace zongmu_toolkit.Views.MediaPlayer
 
         private void OnTimeChanged()
         {
-            var uri = new Uri(string.Format(@"C:\demo\testaaa\test({0}).jpg", currentFrame));
+            var filePath = string.Format(@"{0}\{1}\frame{2}.jpg", Cache, this.hash, currentFrame);
+            while (!File.Exists(filePath))
+            {
+                Thread.Sleep(1000);
+            }
+            var uri = new Uri(filePath);
             Console.WriteLine(uri);
             this.ImageControl.Source = new BitmapImage(uri, new RequestCachePolicy(RequestCacheLevel.CacheIfAvailable));
         }
 
         private void OnSourceChanged(Uri oldSource, Uri newSource)
         {
-            this.videoInfo = this.processor.ReadVideoInfo();
+            this.hash = FileUtils.ComputeHash(newSource.LocalPath);
+            var dir = Cache + hash;
+            FileUtils.CreateIfNotExists(dir);
+            this.videoInfo = this.processor.ReadVideoInfo(newSource.LocalPath);
+            Task.Factory.StartNew(() => this.processor.ExtactPicture(this.videoInfo, newSource.LocalPath, dir));
+            //this.processor.ExtactPicture(this.videoInfo, newSource.LocalPath, dir);
+
             this.LoadVideoResource(newSource);
         }
 
         private void LoadVideoResource(Uri newSource)
         {
-            
+
+
         }
 
     }
