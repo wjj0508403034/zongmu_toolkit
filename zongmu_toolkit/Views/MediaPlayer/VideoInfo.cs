@@ -1,5 +1,4 @@
-﻿using System.IO;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using zongmu_toolkit.Views.MediaPlayer.Exceptions;
 
 namespace zongmu_toolkit.Views.MediaPlayer
@@ -12,8 +11,6 @@ namespace zongmu_toolkit.Views.MediaPlayer
         public long BitRate { get; set; }
         public double Duration { get; set; }
         public long TotalFrames { get; set; }
-
-
 
         public static VideoInfo Parse(string xml)
         {

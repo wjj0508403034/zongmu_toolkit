@@ -65,21 +65,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-<<<<<<< HEAD
+    <Compile Include="Converters\VisibilityReverseConverter.cs" />
     <Compile Include="Core\FileSizes\AbstractFileSize.cs" />
     <Compile Include="Core\FileSizes\GB.cs" />
     <Compile Include="Core\FileSizes\IFileSize.cs" />
     <Compile Include="Core\FileSizes\KB.cs" />
     <Compile Include="Core\FileSizes\MB.cs" />
+    <Compile Include="Core\Times\Duration.cs" />
     <Compile Include="Extensions\FileSizeExtension.cs" />
     <Compile Include="Utils\FileUtils.cs" />
-=======
     <Compile Include="Configs\AppConfig.cs" />
     <Compile Include="Configs\CacheConfig.cs" />
     <Compile Include="Configs\Configuration.cs" />
     <Compile Include="Configs\FfmpegConfig.cs" />
     <Compile Include="Configs\FtpConfig.cs" />
->>>>>>> config
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Views\Common\Tile.cs" />
     <Compile Include="Views\MediaPlayer\Commands\AbstractCommand.cs" />
@@ -87,13 +86,25 @@
     <Compile Include="Views\MediaPlayer\Commands\ExtactPictureCommand.cs" />
     <Compile Include="Views\MediaPlayer\Commands\ICommand.cs" />
     <Compile Include="Views\MediaPlayer\Commands\ReadVideoInfoCommand.cs" />
+    <Compile Include="Views\MediaPlayer\EventArgs\VideoButtonRoutedEventArgs.cs" />
+    <Compile Include="Views\MediaPlayer\EventArgs\VideoProgressRoutedEventArgs.cs" />
+    <Compile Include="Views\MediaPlayer\EventArgs\VideoSourceRoutedEventArgs.cs" />
+    <Compile Include="Views\MediaPlayer\EventHandlers\VideoSourceChangeEventHandler.cs" />
     <Compile Include="Views\MediaPlayer\Exceptions\ReadVideoInfoFailedException.cs" />
     <Compile Include="Views\MediaPlayer\Status.cs" />
+    <Compile Include="Views\MediaPlayer\EventHandlers\VideoButtonClickEventHandler.cs" />
     <Compile Include="Views\MediaPlayer\VideoInfo.cs" />
     <Compile Include="Views\MediaPlayer\VideoPlayer.xaml.cs">
       <DependentUpon>VideoPlayer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MediaPlayer\EventHandlers\VideoProgressChangeEventHandler.cs" />
+    <Compile Include="Views\MediaPlayer\VideoScreen.xaml.cs">
+      <DependentUpon>VideoScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MediaPlayer\VideoProcessor.cs" />
+    <Compile Include="Views\MediaPlayer\VideoProgessBar.xaml.cs">
+      <DependentUpon>VideoProgessBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Upload\FtpUpload.xaml.cs">
       <DependentUpon>FtpUpload.xaml</DependentUpon>
     </Compile>
@@ -109,7 +120,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Themes\Color.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Converter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MediaPlayer\VideoPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MediaPlayer\VideoScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MediaPlayer\VideoProgessBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

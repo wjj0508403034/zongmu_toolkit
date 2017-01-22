@@ -11,7 +11,7 @@ namespace zongmu_toolkit.Views.MediaPlayer.Commands
             this.FilePath = filePath;
         }
 
-        public override ProcessStartInfo GetProcessStartInfo()
+        protected override ProcessStartInfo GetProcessStartInfo()
         {
             return new ProcessStartInfo(@"C:\tmp\ffmpeg\bin\ffprobe.exe", string.Format("-loglevel error -show_streams {0} -print_format xml=x=1 -noprivate", this.FilePath));
         }

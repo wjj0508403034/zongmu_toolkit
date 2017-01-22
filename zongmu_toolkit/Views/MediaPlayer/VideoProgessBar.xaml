@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="zongmu_toolkit.Views.MediaPlayer.VideoProgessBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" x:Name="ProgressBarContainer"
+             d:DesignHeight="30" d:DesignWidth="500">
+    <Grid>
+        <ProgressBar x:Name="ProgressBar" x:FieldModifier="private" ></ProgressBar>
+        <Grid Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding ActualHeight,ElementName=ProgressBarContainer}" />
+                <ColumnDefinition Width="{Binding ActualHeight,ElementName=ProgressBarContainer}" />
+                <ColumnDefinition Width="{Binding ActualHeight,ElementName=ProgressBarContainer}" />
+                <ColumnDefinition Width="{Binding ActualHeight,ElementName=ProgressBarContainer}" />
+                <ColumnDefinition Width="{Binding ActualHeight,ElementName=ProgressBarContainer}" />
+                <ColumnDefinition Width="{Binding ActualHeight,ElementName=ProgressBarContainer}" />
+                <ColumnDefinition Width="{Binding ActualHeight,ElementName=ProgressBarContainer}" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="150" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="PlayButton" Content="播放" ToolTip="播放" Click="OnPlayButtonClicked"  ></Button>
+            <Button x:Name="PauseButton" Content="暂停" ToolTip="暂停"  Click="OnPauseButtonClicked" Visibility="{Binding Visibility,ElementName=PlayButton,Converter={StaticResource VisibilityReverseConverter}}"></Button>
+            <Button x:Name="FastFastForwardButton" Grid.Column="1" Content="快快进" ToolTip="快快进"  Click="OnFastFastForwardButtonClicked"  ></Button>
+            <Button x:Name="FastForwardButton"  Grid.Column="2" Content="快进" ToolTip="快进"  Click="OnFastForwardButtonClicked"  ></Button>
+            <Button x:Name="FastBackwardButton" Grid.Column="3" Content="快退" ToolTip="快退"  Click="OnFastBackwardButtonClicked"  ></Button>
+            <Button x:Name="FastFastBackwardButton" Grid.Column="4" Content="快快退" ToolTip="快快退" Click="OnFastFastBackwardButtonClicked"  ></Button>
+            <Button x:Name="PreviousFrameButton" Grid.Column="5" Content="上一帧" ToolTip="上一帧"  Click="OnPreviousFrameButtonClicked"  ></Button>
+            <Button x:Name="NextFrameButton" Grid.Column="6" Content="下一帧" ToolTip="下一帧" Click="OnNextFrameButtonClicked"  ></Button>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="8" VerticalAlignment="Center" HorizontalAlignment="Right">
+                <TextBlock  x:Name="CurrentTimeTextBlock" x:FieldModifier="private" ></TextBlock>
+                <TextBlock Text="/" Margin="10,0"></TextBlock>
+                <TextBlock  x:Name="DurationTextBlock" x:FieldModifier="private" ></TextBlock>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</UserControl>

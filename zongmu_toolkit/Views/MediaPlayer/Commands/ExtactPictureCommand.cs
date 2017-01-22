@@ -24,7 +24,7 @@ namespace zongmu_toolkit.Views.MediaPlayer.Commands
             this.FrameIndex = frameIndex;
         }
 
-        public override ProcessStartInfo GetProcessStartInfo()
+        protected override ProcessStartInfo GetProcessStartInfo()
         {
             return new ProcessStartInfo(@"C:\tmp\ffmpeg\bin\ffmpeg.exe", string.Format("-i {0} -y -f image2 -ss {1} -vframes 1 {2}", this.FilePath, this.FrameIndex * 1.0 / this.FPS, this.PicName));
         }
